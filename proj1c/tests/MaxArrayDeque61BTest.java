@@ -21,4 +21,23 @@ public class MaxArrayDeque61BTest {
         mad.addFirst("fury road");
         assertThat(mad.max()).isEqualTo("fury road");
     }
+
+    @Test
+    public void multiTest() {
+        MaxArrayDeque61B<String> lld1 = new MaxArrayDeque61B<>(new StringLengthComparator());
+        MaxArrayDeque61B<String> lld2 = new MaxArrayDeque61B<>(new StringLengthComparator());
+        MaxArrayDeque61B<String> lld3 = new MaxArrayDeque61B<>(new StringLengthComparator());
+
+        lld1.addFirst("");
+        lld1.addFirst("2");
+        lld1.addFirst("fury road");
+        lld2.addFirst("");
+        lld2.addFirst("799");
+        lld2.addFirst("325");
+        lld2.addFirst("7999");
+
+        assertThat(lld1.max()).isEqualTo("fury road");
+        assertThat(lld2.max()).isEqualTo("7999");
+        assertThat(lld3.max()).isNull();
+    }
 }
