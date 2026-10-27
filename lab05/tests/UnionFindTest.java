@@ -85,6 +85,25 @@ public class UnionFindTest {
      * Specifically, you may want to write a test for path compression and to check for the correctness
      * of all methods in your implementation.
      */
+    @Test
+    public void checkcompression() {
+        UnionFind uf = new UnionFind(8);
+        uf.union(0,1);
+        uf.union(2,3);
+        uf.union(4,5);
+        uf.union(6,7);
+        uf.union(0,2);
+        uf.union(4,6);
+        uf.union(2,7);
+
+        uf.find(0);
+        uf.find(4);
+        uf.find(2);
+        assertThat(uf.parent(0)).isEqualTo(7);
+        assertThat(uf.parent(1)).isEqualTo(7);
+        assertThat(uf.parent(2)).isEqualTo(7);
+        assertThat(uf.parent(4)).isEqualTo(7);
+    }
 
 }
 
